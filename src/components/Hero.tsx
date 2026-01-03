@@ -1,0 +1,160 @@
+import type { FC } from 'react';
+import { motion, type Variants } from 'framer-motion';
+import { MousePointer2 } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
+import { cn } from '../lib/utils';
+
+const Hero: FC = () => {
+    const title = "Justice. Integrity. Excellence.";
+    const { theme } = useTheme();
+
+    const container: Variants = {
+        hidden: { opacity: 0 },
+        visible: (i = 1) => ({
+            opacity: 1,
+            transition: { staggerChildren: 0.05, delayChildren: 0.1 * i },
+        }),
+    };
+
+    const child: Variants = {
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                type: "spring" as const,
+                damping: 12,
+                stiffness: 100,
+            },
+        },
+        hidden: {
+            opacity: 0,
+            y: 20,
+            transition: {
+                type: "spring" as const,
+                damping: 12,
+                stiffness: 100,
+            },
+        },
+    };
+
+    return (
+        <section id="home" className="relative h-screen w-full flex items-center overflow-hidden bg-luxury-bg transition-colors duration-500">
+            {/* Advanced Background System */}
+            <div className="absolute inset-0 z-0">
+                <motion.div
+                    initial={{ scale: 1.1 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: 'url("/hero-bg.png")' }}
+                />
+                <div className={cn(
+                    "absolute inset-0 transition-opacity duration-1000",
+                    theme === 'dark' ? "bg-gradient-to-r from-luxury-bg via-luxury-bg/85 to-transparent" : "bg-white/80"
+                )}></div>
+                {theme === 'dark' && <div className="absolute inset-0 bg-black/40"></div>}
+
+                {/* Floating Elements */}
+                <motion.div
+                    animate={{
+                        y: [0, -20, 0],
+                        opacity: [0.1, 0.3, 0.1]
+                    }}
+                    transition={{ duration: 8, repeat: Infinity }}
+                    className="absolute top-1/4 left-1/4 w-96 h-96 bg-luxury-gold/10 rounded-full blur-[120px]"
+                />
+                <motion.div
+                    animate={{
+                        y: [0, 30, 0],
+                        opacity: [0.05, 0.2, 0.05]
+                    }}
+                    transition={{ duration: 12, repeat: Infinity }}
+                    className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-luxury-gold-light/5 rounded-full blur-[150px]"
+                />
+            </div>
+
+            <div className="container mx-auto px-6 relative z-10 pt-20">
+                <div className="max-w-4xl">
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1, delay: 0.2 }}
+                        className="flex items-center gap-4 mb-8"
+                    >
+                        <div className="w-12 h-[1px] bg-luxury-gold"></div>
+                        <span className="text-luxury-gold font-medium tracking-[0.4em] uppercase text-xs">
+                            Elite Legal Solutions Since 1995
+                        </span>
+                    </motion.div>
+
+                    <motion.h1
+                        variants={container}
+                        initial="hidden"
+                        animate="visible"
+                        className={cn(
+                            "text-6xl md:text-8xl font-serif font-bold mb-10 leading-[1] overflow-hidden flex flex-wrap transition-colors duration-500",
+                            theme === 'dark' ? "text-white" : "text-luxury-navy"
+                        )}
+                    >
+                        {title.split("").map((char, index) => (
+                            <motion.span
+                                variants={child}
+                                key={index}
+                                className={char === "." ? "text-luxury-gold" : ""}
+                            >
+                                {char === " " ? "\u00A0" : char}
+                            </motion.span>
+                        ))}
+                    </motion.h1>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 1.2 }}
+                    >
+                        <p className={cn(
+                            "text-lg md:text-2xl mb-12 leading-relaxed max-w-2xl font-light transition-colors duration-500",
+                            theme === 'dark' ? "text-luxury-text-sec/70" : "text-luxury-text-sec"
+                        )}>
+                            Crafting sophisticated legal strategies for global enterprises and
+                            high-profile individuals with <span className={cn(
+                                "font-medium italic underline decoration-luxury-gold underline-offset-8 transition-colors duration-500",
+                                theme === 'dark' ? "text-white" : "text-luxury-navy"
+                            )}>unmatched precision.</span>
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-6">
+                            <a href="#contact" className="btn-gold group flex items-center justify-center gap-3">
+                                Schedule Consultation
+                                <motion.span
+                                    animate={{ x: [0, 5, 0] }}
+                                    transition={{ duration: 1.5, repeat: Infinity }}
+                                >
+                                    <MousePointer2 size={18} />
+                                </motion.span>
+                            </a>
+                            <a href="#practice-areas" className={cn(
+                                "btn-outline text-center flex items-center justify-center gap-2 transition-all duration-500",
+                                theme === 'dark' ? "!border-white/20 !text-white hover:!bg-white hover:!text-luxury-navy" : "!border-luxury-navy/20 !text-luxury-navy hover:!bg-luxury-navy hover:!text-white"
+                            )}>
+                                View Expertise Areas
+                            </a>
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
+
+            {/* Scroll Indicator */}
+            <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            >
+                <div className="w-[1px] h-12 bg-gradient-to-b from-luxury-gold to-transparent"></div>
+                <span className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold-light/60 font-semibold rotate-90 origin-left mt-8">SCROLL</span>
+            </motion.div>
+        </section>
+    );
+};
+
+export default Hero;
