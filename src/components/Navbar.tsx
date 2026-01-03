@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { FC } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Scale, Menu, X, Phone, Moon, Sun } from 'lucide-react';
+import { Menu, X, Phone, Moon, Sun } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTheme } from '../context/ThemeContext';
 
@@ -60,7 +60,7 @@ const Navbar: FC = () => {
             <div className="container mx-auto px-6 flex items-center justify-between">
                 <a href="#home" className="flex items-center gap-3 group">
                     <div className="relative">
-                        <Scale className="w-9 h-9 text-luxury-gold transition-transform duration-700 group-hover:rotate-12" />
+                        <img src="/pic.png" alt="Lex Elite Logo" className="w-9 h-9 object-contain transition-transform duration-700 group-hover:scale-110" />
                         <div className="absolute -inset-1 bg-luxury-gold/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </div>
                     <div className="flex flex-col">
@@ -174,7 +174,7 @@ const Navbar: FC = () => {
                                 transition={{ delay: 0.1 }}
                                 className="flex flex-col items-center gap-2 mb-4"
                             >
-                                <Scale className="w-10 h-10 text-luxury-gold" />
+                                <img src="/pic.png" alt="Lex Elite Logo" className="w-10 h-10 object-contain" />
                                 <div className="text-center">
                                     <h2 className="text-2xl font-serif font-bold text-white tracking-wider">
                                         LEX <span className="text-luxury-gold italic">ELITE</span>

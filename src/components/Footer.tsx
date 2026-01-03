@@ -1,19 +1,19 @@
 import type { FC } from 'react';
-import { Scale, Linkedin, Twitter, Facebook, Instagram, ArrowUpRight } from 'lucide-react';
+import { Linkedin, Twitter, Facebook, Instagram, ArrowUpRight } from 'lucide-react';
 
 const Footer: FC = () => {
     return (
         <footer className="bg-luxury-bg pt-24 pb-12 text-luxury-text border-t border-luxury-border relative overflow-hidden transition-colors duration-500">
             {/* Background Branding */}
             <div className="absolute top-0 right-0 p-20 opacity-[0.03] pointer-events-none hidden xl:block text-luxury-text transition-colors duration-500">
-                <Scale size={400} />
+                <img src="/pic.png" alt="" className="w-[400px] h-[400px] opacity-10 grayscale invert" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 sm:gap-16 mb-20 sm:mb-24 text-center sm:text-left">
                     <div className="lg:col-span-2 flex flex-col items-center sm:items-start">
                         <a href="#home" className="flex items-center gap-3 mb-8 group w-fit">
-                            <Scale className="w-10 h-10 text-luxury-gold" />
+                            <img src="/pic.png" alt="Lex Elite Logo" className="w-10 h-10 object-contain" />
                             <div className="flex flex-col">
                                 <span className="text-2xl font-serif font-bold tracking-tight text-luxury-text">
                                     LEX <span className="text-luxury-gold italic">ELITE</span>
