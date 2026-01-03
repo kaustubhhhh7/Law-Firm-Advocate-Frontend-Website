@@ -1,73 +1,66 @@
-# React + TypeScript + Vite
+# Law Firm — Advocate Frontend Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the frontend for a law firm / advocate website built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+Features
+- Minimal, responsive UI for showcasing advocates and practice areas
+- Contact and booking UI components
+- Light/dark theme support via context
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Tech stack
+- React + TypeScript
+- Vite (dev server & build)
+- ESLint + TypeScript configs
 
-## React Compiler
+Quickstart
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Prerequisites
+- Node.js 16+ (recommended 18+)
 
-## Expanding the ESLint configuration
+Install
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Run dev server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Build for production
+
+```bash
+npm run build
+npm run preview
+```
+
+Available scripts
+- `dev` — start Vite dev server
+- `build` — build production bundle
+- `preview` — locally preview the production build
+
+Project structure (top-level)
+- `src/` — application source code
+- `public/` — static assets
+- `vite.config.ts`, `tsconfig.json`, `package.json` — project config
+
+Deployment
+
+You can deploy the built `dist/` output to any static host (Vercel, Netlify, GitHub Pages, etc.). For Vercel, connect the repository and set the build command to `npm run build` and the output directory to `dist`.
+
+Contributing
+
+Feel free to open issues or PRs. For local development, follow the Quickstart steps above.
+
+Author
+- Project maintained by the repository owner.
+
+License
+- See the repository license or add one if required.
+
+---
+
+If you'd like, I can add a demo screenshot, badges, or CI pipeline next.  
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
