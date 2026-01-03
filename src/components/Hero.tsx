@@ -74,15 +74,15 @@ const Hero: FC = () => {
             </div>
 
             <div className="container mx-auto px-6 relative z-10 pt-20">
-                <div className="max-w-4xl">
+                <div className="max-w-4xl mx-auto flex flex-col items-center sm:items-start text-center sm:text-left">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1, delay: 0.2 }}
                         className="flex items-center gap-4 mb-8"
                     >
-                        <div className="w-12 h-[1px] bg-luxury-gold"></div>
-                        <span className="text-luxury-gold font-medium tracking-[0.4em] uppercase text-xs">
+                        <div className="w-12 h-[1px] bg-luxury-gold hidden sm:block"></div>
+                        <span className="text-luxury-gold font-medium tracking-[0.3em] sm:tracking-[0.4em] uppercase text-[10px] sm:text-xs">
                             Elite Legal Solutions Since 1995
                         </span>
                     </motion.div>
@@ -92,7 +92,7 @@ const Hero: FC = () => {
                         initial="hidden"
                         animate="visible"
                         className={cn(
-                            "text-6xl md:text-8xl font-serif font-bold mb-10 leading-[1] overflow-hidden flex flex-wrap transition-colors duration-500",
+                            "text-4xl sm:text-6xl md:text-8xl font-serif font-bold mb-8 sm:mb-10 leading-[1.1] sm:leading-[1] overflow-hidden flex flex-wrap justify-center sm:justify-start transition-colors duration-500",
                             theme === 'dark' ? "text-white" : "text-luxury-navy"
                         )}
                     >
@@ -111,9 +111,10 @@ const Hero: FC = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 1.2 }}
+                        className="flex flex-col items-center sm:items-start"
                     >
                         <p className={cn(
-                            "text-lg md:text-2xl mb-12 leading-relaxed max-w-2xl font-light transition-colors duration-500",
+                            "text-base sm:text-lg md:text-2xl mb-10 sm:mb-12 leading-relaxed max-w-2xl font-light transition-colors duration-500",
                             theme === 'dark' ? "text-luxury-text-sec/70" : "text-luxury-text-sec"
                         )}>
                             Crafting sophisticated legal strategies for global enterprises and
@@ -123,8 +124,8 @@ const Hero: FC = () => {
                             )}>unmatched precision.</span>
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-6">
-                            <a href="#contact" className="btn-gold group flex items-center justify-center gap-3">
+                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto">
+                            <a href="#contact" className="btn-gold group flex items-center justify-center gap-3 w-full sm:w-auto">
                                 Schedule Consultation
                                 <motion.span
                                     animate={{ x: [0, 5, 0] }}
@@ -134,7 +135,7 @@ const Hero: FC = () => {
                                 </motion.span>
                             </a>
                             <a href="#practice-areas" className={cn(
-                                "btn-outline text-center flex items-center justify-center gap-2 transition-all duration-500",
+                                "btn-outline text-center flex items-center justify-center gap-2 transition-all duration-500 w-full sm:w-auto",
                                 theme === 'dark' ? "!border-white/20 !text-white hover:!bg-white hover:!text-luxury-navy" : "!border-luxury-navy/20 !text-luxury-navy hover:!bg-luxury-navy hover:!text-white"
                             )}>
                                 View Expertise Areas

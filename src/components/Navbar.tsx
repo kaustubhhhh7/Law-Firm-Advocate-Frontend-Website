@@ -30,6 +30,15 @@ const Navbar: FC = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }, [isMobileMenuOpen]);
+
     const navLinks = [
         { name: 'Home', href: '#home', id: 'home' },
         { name: 'About', href: '#about', id: 'about' },
@@ -55,7 +64,7 @@ const Navbar: FC = () => {
                     <div className="flex flex-col">
                         <span className={cn(
                             "text-2xl font-serif font-bold tracking-tight leading-none transition-colors",
-                            isScrolled || theme === 'dark' ? "text-white" : "text-luxury-navy"
+                            theme === 'dark' ? "text-white" : "text-luxury-text"
                         )}>
                             LEX <span className="text-luxury-gold italic">ELITE</span>
                         </span>
@@ -75,7 +84,7 @@ const Navbar: FC = () => {
                                 className={cn(
                                     'nav-link group flex items-center gap-1',
                                     activeSection === link.id ? 'text-luxury-gold active font-semibold' :
-                                        (isScrolled || theme === 'dark' ? 'text-white/70 hover:text-white' : 'text-luxury-navy/70 hover:text-luxury-navy')
+                                        (theme === 'dark' ? 'text-white/70 hover:text-white' : 'text-luxury-text/70 hover:text-luxury-text')
                                 )}
                             >
                                 {link.name}
@@ -87,7 +96,7 @@ const Navbar: FC = () => {
                         onClick={toggleTheme}
                         className={cn(
                             "p-2 rounded-full transition-all duration-500 hover:bg-luxury-gold/10",
-                            isScrolled || theme === 'dark' ? "text-white hover:text-luxury-gold" : "text-luxury-navy hover:text-luxury-gold"
+                            theme === 'dark' ? "text-white hover:text-luxury-gold" : "text-luxury-text hover:text-luxury-gold"
                         )}
                         title={theme === 'dark' ? "Switch to Light Luxury" : "Switch to Dark Luxury"}
                     >
@@ -99,7 +108,7 @@ const Navbar: FC = () => {
                     <div className="flex items-center gap-6">
                         <a href="tel:+15551234567" className={cn(
                             "flex items-center gap-2 text-sm transition-colors font-medium",
-                            isScrolled || theme === 'dark' ? "text-white/80 hover:text-luxury-gold" : "text-luxury-navy/80 hover:text-luxury-gold"
+                            theme === 'dark' ? "text-white/80 hover:text-luxury-gold" : "text-luxury-text/80 hover:text-luxury-gold"
                         )}>
                             <Phone size={14} className="text-luxury-gold" />
                             <span>+1 (555) 123-4567</span>
@@ -119,7 +128,7 @@ const Navbar: FC = () => {
                         onClick={toggleTheme}
                         className={cn(
                             "p-2 rounded-full",
-                            isScrolled || theme === 'dark' ? "text-white" : "text-luxury-navy"
+                            theme === 'dark' ? "text-white" : "text-luxury-text"
                         )}
                     >
                         {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
@@ -127,7 +136,7 @@ const Navbar: FC = () => {
                     <button
                         className={cn(
                             "transition-colors",
-                            isScrolled || theme === 'dark' ? "text-white hover:text-luxury-gold" : "text-luxury-navy hover:text-luxury-gold"
+                            theme === 'dark' ? "text-white hover:text-luxury-gold" : "text-luxury-text hover:text-luxury-gold"
                         )}
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
@@ -139,10 +148,26 @@ const Navbar: FC = () => {
             {/* Mobile Menu */}
             <div
                 className={cn(
-                    'fixed inset-0 bg-luxury-bg z-40 flex flex-col items-center justify-center gap-10 transition-all duration-700 ease-in-out lg:hidden',
-                    isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                    'fixed inset-0 bg-luxury-bg z-40 flex flex-col items-center justify-center gap-10 transition-transform duration-500 ease-out lg:hidden',
+                    isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full',
+                    isMobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'
                 )}
             >
+                {/* Mobile Menu Logo */}
+                <a href="#home" className="flex items-center gap-3 mb-8 group w-fit mx-auto">
+                    <div className="relative">
+                        <Scale className="w-10 h-10 text-luxury-gold" />
+                    </div>
+                    <div className="flex flex-col">
+                        <span className={cn(
+                            "text-2xl font-serif font-bold tracking-tight",
+                            theme === 'dark' ? "text-white" : "text-luxury-text"
+                        )}>LEX <span className="text-luxury-gold italic">ELITE</span></span>
+                        <span className="text-[9px] uppercase tracking-[0.4em] font-semibold text-luxury-gold-light mt-1.5 opacity-80">
+                            International Advocates
+                        </span>
+                    </div>
+                </a>
                 <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
                     <div className="grid grid-cols-6 h-full w-full">
                         {[...Array(24)].map((_, i) => (
@@ -163,7 +188,7 @@ const Navbar: FC = () => {
                         key={idx}
                         href={link.href}
                         className={cn(
-                            "text-3xl font-serif transition-all duration-500 hover:scale-110",
+                            "text-3xl font-serif transition-all duration-500 hover:scale-110 min-h-[44px] flex items-center justify-center",
                             activeSection === link.id ? "text-luxury-gold" : "text-luxury-text"
                         )}
                         onClick={() => setIsMobileMenuOpen(false)}

@@ -46,6 +46,7 @@
     scroll-behavior: smooth;
     transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
     scrollbar-width: none;
+    overflow-x: hidden;
     /* Firefox */
   }
 
@@ -56,6 +57,7 @@
 
   body {
     @apply bg-luxury-bg text-luxury-text font-sans antialiased selection:bg-luxury-gold selection:text-white;
+    overflow-x: hidden;
   }
 
   h1,

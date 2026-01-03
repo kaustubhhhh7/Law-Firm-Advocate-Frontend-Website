@@ -31,14 +31,14 @@ const Testimonials: FC = () => {
     const prev = () => setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
     return (
-        <section id="testimonials" className="py-32 bg-luxury-bg relative overflow-hidden transition-colors duration-500">
+        <section id="testimonials" className="py-20 sm:py-32 bg-luxury-bg relative overflow-hidden transition-colors duration-500">
             <div className="container mx-auto px-6 relative z-10">
-                <div className="flex flex-col items-center text-center mb-20">
+                <div className="flex flex-col items-center text-center mb-16 sm:mb-20">
                     <span className="section-subtitle">Success Stories</span>
-                    <h2 className="section-title text-luxury-text">Global Endorsements</h2>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold transition-colors duration-500 text-luxury-text">Global Endorsements</h2>
                 </div>
 
-                <div className="max-w-5xl mx-auto relative px-12">
+                <div className="max-w-5xl mx-auto relative px-0 sm:px-12">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={index}
@@ -46,43 +46,45 @@ const Testimonials: FC = () => {
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 1.05 }}
                             transition={{ duration: 0.8 }}
-                            className="bg-luxury-bg-sec border border-luxury-border p-12 md:p-20 relative transition-colors duration-500"
+                            className="bg-luxury-bg-sec border border-luxury-border p-8 sm:p-12 md:p-20 relative transition-colors duration-500"
                         >
-                            <Quote className="absolute top-10 left-10 w-20 h-20 text-luxury-gold/10 pointer-events-none" />
+                            <Quote className="absolute top-6 left-6 sm:top-10 sm:left-10 w-12 h-12 sm:w-20 sm:h-20 text-luxury-gold/10 pointer-events-none" />
 
                             <div className="flex flex-col items-center text-center">
-                                <p className="text-2xl md:text-4xl font-serif italic text-luxury-text mb-12 leading-relaxed transition-colors duration-500">
+                                <p className="text-xl sm:text-2xl md:text-4xl font-serif italic text-luxury-text mb-8 sm:mb-12 leading-relaxed transition-colors duration-500">
                                     "{testimonials[index].quote}"
                                 </p>
 
                                 <div className="flex flex-col items-center">
-                                    <div className="w-20 h-20 rounded-full border-2 border-luxury-gold p-1 mb-6 transition-colors duration-500">
+                                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-luxury-gold p-1 mb-4 sm:mb-6 transition-colors duration-500">
                                         <img
                                             src={testimonials[index].image}
                                             alt={testimonials[index].author}
                                             className="w-full h-full rounded-full grayscale hover:grayscale-0 transition-all duration-500 object-cover"
                                         />
                                     </div>
-                                    <h4 className="text-xl font-bold text-luxury-text transition-colors duration-500">{testimonials[index].author}</h4>
-                                    <p className="text-luxury-gold font-bold uppercase tracking-widest text-xs mt-1">{testimonials[index].role}</p>
+                                    <h4 className="text-lg sm:text-xl font-bold text-luxury-text transition-colors duration-500">{testimonials[index].author}</h4>
+                                    <p className="text-luxury-gold font-bold uppercase tracking-widest text-[10px] sm:text-xs mt-1">{testimonials[index].role}</p>
                                 </div>
                             </div>
                         </motion.div>
                     </AnimatePresence>
 
                     {/* Navigation */}
-                    <button
-                        onClick={prev}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 w-16 h-16 bg-luxury-bg border border-luxury-border rounded-full flex items-center justify-center text-luxury-gold hover:bg-luxury-gold hover:text-white transition-all duration-500 shadow-xl z-20 group"
-                    >
-                        <ChevronLeft size={32} className="group-hover:-translate-x-1 transition-transform" />
-                    </button>
-                    <button
-                        onClick={next}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 w-16 h-16 bg-luxury-bg border border-luxury-border rounded-full flex items-center justify-center text-luxury-gold hover:bg-luxury-gold hover:text-white transition-all duration-500 shadow-xl z-20 group"
-                    >
-                        <ChevronRight size={32} className="group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    <div className="flex justify-between items-center mt-8 sm:mt-0 sm:absolute sm:top-1/2 sm:-translate-y-1/2 sm:w-full sm:left-0 sm:px-4 z-20">
+                        <button
+                            onClick={prev}
+                            className="w-12 h-12 sm:w-16 sm:h-16 bg-luxury-bg border border-luxury-border rounded-full flex items-center justify-center text-luxury-gold hover:bg-luxury-gold hover:text-white transition-all duration-500 shadow-xl group"
+                        >
+                            <ChevronLeft size={24} className="sm:size-32 group-hover:-translate-x-1 transition-transform" />
+                        </button>
+                        <button
+                            onClick={next}
+                            className="w-12 h-12 sm:w-16 sm:h-16 bg-luxury-bg border border-luxury-border rounded-full flex items-center justify-center text-luxury-gold hover:bg-luxury-gold hover:text-white transition-all duration-500 shadow-xl group"
+                        >
+                            <ChevronRight size={24} className="sm:size-32 group-hover:translate-x-1 transition-transform" />
+                        </button>
+                    </div>
                 </div>
 
                 {/* Indicators */}

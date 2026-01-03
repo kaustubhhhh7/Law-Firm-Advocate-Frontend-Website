@@ -27,30 +27,30 @@ const reasons = [
 
 const WhyChooseUs: FC = () => {
     return (
-        <section id="why-us" className="py-32 bg-luxury-bg text-luxury-text relative overflow-hidden transition-colors duration-500">
+        <section id="why-us" className="py-20 sm:py-32 bg-luxury-bg text-luxury-text relative overflow-hidden transition-colors duration-500">
             <div className="container mx-auto px-6 relative z-10">
-                <div className="flex flex-col lg:flex-row gap-20 items-center">
-                    <div className="lg:w-1/2">
+                <div className="flex flex-col lg:flex-row gap-12 sm:gap-20 items-center">
+                    <div className="w-full lg:w-1/2 text-center lg:text-left">
                         <span className="section-subtitle">Excellence Guaranteed</span>
-                        <h2 className="section-title text-luxury-text">Why High-Profile Clients <br /><span className="text-luxury-gold italic">Choose Our Firm</span></h2>
-                        <p className="text-luxury-text-sec text-lg mb-10 leading-relaxed transition-colors duration-500">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-8 transition-colors duration-500 text-luxury-text">Why High-Profile Clients <br className="hidden sm:block" /><span className="text-luxury-gold italic">Choose Our Firm</span></h2>
+                        <p className="text-luxury-text-sec text-base sm:text-lg mb-10 leading-relaxed transition-colors duration-500 max-w-2xl mx-auto lg:mx-0">
                             We don't just practice law; we define it. Our firm is built on the pillars of
                             elite representation, strategic foresight, and an unwavering commitment to
                             the success of our clients on the global stage.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-6">
-                            <div className="bg-luxury-bg-sec p-6 border border-luxury-border transition-colors duration-500">
+                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start">
+                            <div className="bg-luxury-bg-sec p-6 border border-luxury-border transition-colors duration-500 flex flex-col items-center sm:items-start">
                                 <h4 className="text-3xl font-serif font-bold text-luxury-gold mb-1">95%</h4>
                                 <p className="text-[10px] uppercase tracking-widest font-bold text-luxury-text-sec transition-colors duration-500">Success Rate</p>
                             </div>
-                            <div className="bg-luxury-bg-sec p-6 border border-luxury-border transition-colors duration-500">
+                            <div className="bg-luxury-bg-sec p-6 border border-luxury-border transition-colors duration-500 flex flex-col items-center sm:items-start">
                                 <h4 className="text-3xl font-serif font-bold text-luxury-gold mb-1">40+</h4>
                                 <p className="text-[10px] uppercase tracking-widest font-bold text-luxury-text-sec transition-colors duration-500">Countries Served</p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
                         {reasons.map((reason, index) => (
                             <motion.div
                                 key={index}
@@ -58,13 +58,13 @@ const WhyChooseUs: FC = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                                className="p-8 bg-luxury-bg-sec border border-luxury-border hover:border-luxury-gold/30 transition-all duration-500 group"
+                                className="p-6 sm:p-8 bg-luxury-bg-sec border border-luxury-border hover:border-luxury-gold/30 transition-all duration-500 group flex flex-col items-center sm:items-start text-center sm:text-left"
                             >
-                                <div className="text-luxury-gold mb-6 group-hover:scale-110 transition-transform duration-500">
+                                <div className="text-luxury-gold mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-500">
                                     {reason.icon}
                                 </div>
-                                <h4 className="text-xl font-bold text-luxury-text mb-4 transition-colors duration-500">{reason.title}</h4>
-                                <p className="text-luxury-text-sec text-sm leading-relaxed transition-colors duration-500 italic">
+                                <h4 className="text-lg sm:text-xl font-bold text-luxury-text mb-3 sm:mb-4 transition-colors duration-500">{reason.title}</h4>
+                                <p className="text-luxury-text-sec text-xs sm:text-sm leading-relaxed transition-colors duration-500 italic">
                                     {reason.description}
                                 </p>
                             </motion.div>
